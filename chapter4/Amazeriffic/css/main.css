@@ -52,14 +52,18 @@ main {
 	background: #fff;
 }
 
-.left-col {
-	float: left;
-	width: 570px;
+.tabs a span {
+	background: #ddd;
+	border-radius: 5px 5px 0 0;
+	display: inline-block;
+	margin-right: 10px;
+	padding: 5px;
+	text-align: center;
+	width: 100px;
 }
 
-.right-col {
-	float: right;
-	width: 285px;
+.tabs a span.active {
+	background: #eee;
 }
 
 /* ========================== FOOTER ======================== */
