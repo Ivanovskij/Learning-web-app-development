@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+	<script type="text/javascript">
+		/*
+			Вот как выглядит эта задача: напишите программу, которая выводит числа от
+			1 до 100. Но вместо тех, что делятся на 3, пусть будет выведено Fizz, а вместо тех,
+			что делятся на 5, — Buzz. Вместо тех же, что делятся и на 3, и на 5, пусть будет
+			выведено FizzBuzz.
+		*/
+
+		var main = function() {
+
+			var start = 1,
+				end = 100;
+
+			var $out = $("<ul>");
+
+			for (var num = start; num <= end; num++) {
+				if ((num % 3 == 0) &&
+					(num % 5 == 0)) {
+					$out = $("<li>").text(num + ": FizzBuzz");
+				} else if (num % 3 == 0) {
+					$out = $("<li>").text(num + ": Fizz");
+				} else if (num % 5 == 0) {
+					$out = $("<li>").text(num + ": Buzz");
+				} else {
+					$out = $("<li>").text(num);
+				}
+				$("body").append($out);
+			}
+
+		};
+
+		$(document).ready(main);
+	</script>
+</head>
+<body>
+	
+	
+</body>
+</html>
