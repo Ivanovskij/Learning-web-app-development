@@ -17,6 +17,14 @@ a {
 	color: #000;
 }
 
+h3 {
+	background: #eee;
+	color: #999;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: bold;
+	padding: 5px;
+}
+
 .container {
 	max-width: 855px;
 	margin: auto;
