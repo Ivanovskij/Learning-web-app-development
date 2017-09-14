@@ -8,7 +8,6 @@ var main = function (toDoObjects) {
 	$(".tabs a span").toArray().forEach(function (_element) {
 		$(_element).on("click", function() {
 			var $content,
-				$input,
 				$button,
 				i;
 
@@ -67,18 +66,38 @@ var main = function (toDoObjects) {
 				});
 
 			} else if ($element.parent().is(":nth-child(4)")) {
-				$input = $("<input type='text'>");
+				var $description_text = $("<h3>").text("Описание:");
+				var $input_descr = $("<input>");
+				$input_descr.attr("type", "text");
+				$input_descr.attr("class", "input_descr");
+
+				var $tags_text = $("<h3>").text("tags:");
+				var $input_tags = $("<input>").addClass('input_tags');
+
 				$button = $("<button>").text("+");
-				$("main .content").append($input).append($button);
+
+				$("main .content").append($description_text).append($input_descr);
+				$("main .content").append($tags_text).append($input_tags);
+				$("main .content").append($button);
 
 				$button.on("click", function() {
-					var $text_input = $("input").val();
-					if ($text_input == "" ||
-						$text_input == null) {
+					var descr = $input_descr.val();
+					var tags = $input_tags.val().split(",");
+
+					if (descr == "" ||
+						tags == "") {
 						return;
 					}
-					toDos.push($text_input);
-					$("input").val("");
+
+					toDoObjects.push({"description": descr, "tags" : tags});
+					
+					// update toDos
+					toDos = toDoObjects.map(function (toDo) {
+						return toDo.description;
+					});
+
+					$input_descr.val("");
+					$input_tags.val("");
 				});
 			}
 
