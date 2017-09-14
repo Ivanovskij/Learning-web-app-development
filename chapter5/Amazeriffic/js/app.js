@@ -93,40 +93,6 @@ var main = function (toDoObjects) {
 	$(".tabs a:first-child span").trigger("click");
 };
 
-
-var organizeByTags = function(toDoObjects) {
-	// получаем все теги
-	// без дупликатов
-	var tags = [];
-	toDoObjects.forEach(function (todo) {
-		todo.tags.forEach(function (tag) {
-			// убеждаемся, что такого тега еще нет
-			// избегаем дупликтов
-			if (tags.indexOf(tag) === -1) {
-				tags.push(tag);
-			}
-		});
-	});
-
-var tagObjects = tags.map(function (tag) {
-	// здесь мы находим все задачи,
-	// содержащие этот тег
-	var toDosWithTag = [];
-
-	toDoObjects.forEach(function (toDo) {
-		// проверка, что результат
-		// indexOf is *не* равен -1
-		if (toDo.tags.indexOf(tag) !== -1) {
-			toDosWithTag.push(toDo.description);
-		}
-	});
-
-	// мы связываем каждый тег с объектом, который
-	// содержит название тега и массив
-	return { "name": tag, "toDos": toDosWithTag };
-	});
-};
-
 $(document).ready(function() {
 	$.getJSON("todos.json", function (toDoObjects) {
 		main(toDoObjects);
