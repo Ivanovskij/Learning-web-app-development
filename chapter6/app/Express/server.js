@@ -1,14 +1,18 @@
 var express = require("express"),
-http = require("http"),
-app;
-// Создаем http-сервер на основе Express
-// и заставляем его слушать на порте 3000
-app = express();
-http.createServer(app).listen(3000);
-// настраиваем маршруты
+	http = require("http"),
+	app = express();
+
+// настроим статическую файловую папку
+// для маршрута по умолчанию
+app.use(express.static(__dirname + "/client"));
+
+// создадим HTTP-сервер на базе Express
+http.createServer(app).listen(8080);
+
+// настроим маршруты
 app.get("/hello", function (req, res) {
-res.send("Hello, World!");
+	res.send("hello world!");
 });
 app.get("/goodbye", function (req, res) {
-res.send("Goodbye, World!");
+	res.send("goodbye world!");
 });
