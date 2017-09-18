@@ -28,3 +28,5 @@ twitter.stream(
 setInterval(function() {
 	console.log("awesome: " + counts.awesome);
 }, 3000);
+
+module.exports = counts;

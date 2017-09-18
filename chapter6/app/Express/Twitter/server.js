@@ -10,6 +10,6 @@ app.use(express.static(__dirname + "/client"));
 // создадим HTTP-сервер на базе Express
 http.createServer(app).listen(8080);
 
-app.get("/counts", function(req, res) {
+app.get("/counts.json", function(req, res) {
 	res.json(tweetCounts);
 });
