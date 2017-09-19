@@ -89,8 +89,14 @@ var main = function (toDoObjects) {
 						return;
 					}
 
-					toDoObjects.push({"description": descr, "tags" : tags});
+					// создаем новый элемент списка задач
+					var newTodo = {"description" : descr, "tags" : tags};
+					toDoObjects.push(newTodo);
 					
+					$.post("todos", newTodo, function(response) {
+						console.log(response);
+					});
+
 					// update toDos
 					toDos = toDoObjects.map(function (toDo) {
 						return toDo.description;
@@ -113,7 +119,7 @@ var main = function (toDoObjects) {
 };
 
 $(document).ready(function() {
-	$.getJSON("todos.json", function (toDoObjects) {
+	$.getJSON("todosOld.json", function (toDoObjects) {
 		main(toDoObjects);
 	});
 });
