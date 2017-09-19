@@ -1,0 +1,90 @@
+/* ========================== MAIN SETTINGS ======================== */
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #fff;
+	margin: auto;
+}
+
+header, main, footer {
+	min-width: 855px;
+}
+
+a {
+	color: #000;
+}
+
+h3 {
+	background: #eee;
+	color: #999;
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: bold;
+	padding: 5px;
+}
+
+.container {
+	max-width: 855px;
+	margin: auto;
+}
+
+.clear {
+	clear: both;
+}
+
+/* ========================== HEADER ======================== */
+header {
+	background: #fff;
+	border-bottom: 2px solid #efefef;
+	overflow: auto;
+	margin-bottom: 20px;
+	height: 80px;
+}
+
+header h1 {
+	float: left;
+	width: 570px;
+}
+
+header nav {
+	float: right;
+	margin-top: 10px;
+	width: 285px;
+}
+
+
+/* ========================== MAIN ======================== */
+main {
+	background: #fff;
+}
+
+.tabs a span {
+	background: #ddd;
+	border-radius: 5px 5px 0 0;
+	display: inline-block;
+	margin-right: 10px;
+	padding: 5px;
+	text-align: center;
+	width: 100px;
+}
+
+.tabs a span.active {
+	background: #eee;
+}
+
+/* ========================== FOOTER ======================== */
+footer {
+	background: #f9e933;
+}
+
+.contact {
+	float: left;
+	width: 570px;
+}
+
+.sitemap {
+	float: right;
+	width: 285px;
+}
