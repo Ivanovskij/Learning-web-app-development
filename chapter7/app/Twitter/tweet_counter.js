@@ -1,5 +1,7 @@
 var ntwitter = require("ntwitter"),
+	redis = require("redis"),
 	credentials = require("./credentials.json"),
+	redisClient,
 	twitter,
 	counts = {};
 
@@ -8,6 +10,9 @@ twitter = ntwitter(credentials);
 
 // initialize our counters
 counts.awesome = 0;
+
+// создание клиента для подключения к Redis
+redisClient = redis.createClient();
 
 // настроим поток twitter с тремя параметрами
 // разделенными запятыми
@@ -18,6 +23,7 @@ twitter.stream(
 		stream.on('data', function(tweet) {
 			if (tweet.text.indexOf("awesome") > -1) {
 				// increment the awesome counter
+				redisClient.incr("awesome");
 				counts.awesome = counts.awesome + 1;
 			}
 		});
