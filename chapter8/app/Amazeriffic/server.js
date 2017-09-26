@@ -1,13 +1,23 @@
 var express = require("express"),
 	http = require("http"),
 	mongoose = require("mongoose"),
-	app = express();
+	app = express(),
+	servies,
+	mongoUrl = "mongodb://localhost/amazeriffic";
 
 app.use(express.static(__dirname + "/client"));
-app.use(express.urlencoded());
+app.use(express.bodyParser());
+
+if (process.env.VCAP_SERVICES) {
+	services = JSON.parse(process.env.VCAP_SERVICES);
+	mongoUrl = services["mongolab-n/a"][0].credentials.uri;
+	console.log(process.env.VCAP_SERVICES);
+}
+
+console.log(mongoUrl);
 
 // подключаемся к хранилищу данных
-mongoose.connect('mongodb://localhost/amazeriffic');
+mongoose.connect(mongoUrl);
 
 // определяем модель
 var toDoSchema = mongoose.Schema({
@@ -17,7 +27,7 @@ var toDoSchema = mongoose.Schema({
 
 var ToDo = mongoose.model("ToDo", toDoSchema);
 
-http.createServer(app).listen(8080);
+http.createServer(app).listen(process.env.PORT || 3000);
 
 app.get("/todos.json", function(req, res) {
 	ToDo.find({}, function(err, toDos) {
