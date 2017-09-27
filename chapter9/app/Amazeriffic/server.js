@@ -15,4 +15,6 @@ http.createServer(app).listen(8080);
 
 app.get("/todos.json", ToDosController.index);
 
+app.get("/todos/:id", ToDosController.show);
+
 app.post("/todos", ToDosController.create);
