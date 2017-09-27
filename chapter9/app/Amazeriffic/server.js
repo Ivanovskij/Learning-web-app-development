@@ -1,6 +1,7 @@
 var express = require("express"),
 	http = require("http"),
 	mongoose = require("mongoose"),
+	ToDo = require("./models/todo.js"),
 	app = express();
 
 app.use(express.static(__dirname + "/client"));
@@ -8,14 +9,6 @@ app.use(express.urlencoded());
 
 // подключаемся к хранилищу данных
 mongoose.connect('mongodb://localhost/amazeriffic');
-
-// определяем модель
-var toDoSchema = mongoose.Schema({
-	description : String,
-	tags: [ String ]
-});
-
-var ToDo = mongoose.model("ToDo", toDoSchema);
 
 http.createServer(app).listen(8080);
 
